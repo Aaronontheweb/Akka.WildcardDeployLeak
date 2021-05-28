@@ -6,13 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="app.conf" />
+    <Compile Include="..\Akka.WildcardDeployLeak.1.4.20\Program.cs" Link="Program.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="app.conf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="..\Akka.WildcardDeployLeak.1.4.20\app.conf" Link="app.conf" />
   </ItemGroup>
 
   <ItemGroup>

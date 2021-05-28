@@ -25,7 +25,10 @@ namespace Akka.WildcardDeployLeak
                 parentActor.Tell(Protocol.SpawnChild.Instance);
             }
 
-            await actorSystem.Terminate();
+            //await actorSystem.Terminate();
+            await Task.Delay(10000); // wait 10 seconds
+            GC.Collect();
+            GC.WaitForFullGCComplete();
 
             // all actors terminated
             Console.WriteLine("All actors terminated. Press any enter to exit.");
@@ -71,7 +74,7 @@ namespace Akka.WildcardDeployLeak
         protected override void PreStart()
         {
             Context.ActorOf(WorkerActor.MyProps.WithRouter(FromConfig.Instance), "myRouter");
-            Context.System.Scheduler.ScheduleTellOnce(TimeSpan.FromSeconds(30), 
+            Context.System.Scheduler.ScheduleTellOnce(TimeSpan.FromSeconds(3), 
                 Self, PoisonPill.Instance, ActorRefs.NoSender);
         }
     }
