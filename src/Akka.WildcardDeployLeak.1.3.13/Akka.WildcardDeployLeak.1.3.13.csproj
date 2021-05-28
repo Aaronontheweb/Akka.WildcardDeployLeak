@@ -10,7 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\Akka.WildcardDeployLeak.1.4.20\app.conf" Link="app.conf" />
+    <Content Include="app.conf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
